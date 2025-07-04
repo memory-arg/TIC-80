@@ -34,3 +34,11 @@ jobs:
           cd build
           cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SDLGPU=On -DBUILD_STATIC=ON -DBUILD_WITH_ALL=ON -DBUILD_PRO=On ..
           cmake --build . --parallel
+      
+      - name: Deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: "tic80-linux-gcc14"
+          path: |
+            build/bin/tic80
+            build/bin/*.so
